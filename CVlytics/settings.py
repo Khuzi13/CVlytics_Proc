@@ -151,22 +151,23 @@ USE_TZ = True
 # STATICFILES_DIRS =[
 #     BASE_DIR,'static'
 # ]
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
-from pathlib import Path
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = True   # production me True mat rakho
 
-ALLOWED_HOSTS = ["*"]  # abhi testing ke liye
-
-STATIC_URL = "/static/"
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",   # yahan tumhari css/js hai
+    BASE_DIR / 'static',   # yahan tumhari css/js hain
 ]
 
-STATIC_ROOT = BASE_DIR / "staticfiles"  # collectstatic yahin copy karega
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # collectstatic yahan copy karega
+
+# -------- MEDIA --------
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://super-camala-cvlytics-e021eeef.koyeb.app",
+]

@@ -28,7 +28,13 @@ SECRET_KEY = 'django-insecure-44#azw8(zjbevr)dlbmdxhqx9x-i3#2%v!ahn2wk2xj*wu4r3q
 # ALLOWED_HOSTS = ["super-camala-cvlytics-e021eeef.koyeb.app",
 #     "localhost",
 #     "127.0.0.1",]
+DEBUG = False   # production me hamesha False
 
+ALLOWED_HOSTS = [
+    'super-camala-cvlytics-e021eeef.koyeb.app',
+    '127.0.0.1',
+    'localhost',
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -154,7 +160,9 @@ USE_TZ = True
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = True   # production me True mat rakho
+ALLOWED_HOSTS = ["*"]
 
+# -------- STATIC FILES --------
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [

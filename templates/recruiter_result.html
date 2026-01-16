@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+    <div class="dashboard-wrapper">
+        
+        <!-- SECTION 1: TOP INSIGHTS (Split View) -->
+        <div class="insights-container">
+            
+            <!-- Left: Summary Stats -->
+            <div class="stats-panel">
+                <h3><i class="fa-solid fa-chart-pie"></i> Batch Snapshot</h3>
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <span class="label">Total Resumes</span>
+                        <strong class="value">120</strong>
+                    </div>
+                    <div class="stat-box">
+                        <span class="label">Avg ATS Score</span>
+                        <strong class="value text-primary">62%</strong>
+                    </div>
+                    <div class="stat-box">
+                        <span class="label">Top 10% Candidates</span>
+                        <strong class="value text-success">12</strong>
+                    </div>
+                    <div class="stat-box">
+                        <span class="label">JD Match Applied</span>
+                        <strong class="value text-purple">YES</strong>
+                    </div>
+                </div>
+                <p class="insight-note"><i class="fa-solid fa-circle-info"></i> Batch quality is <strong>Above Average</strong> compared to industry standards.</p>
+            </div>
+
+            <!-- Right: Charts Slider -->
+            <!-- Chart.js CDN (Iske bina charts nahi chalenge) -->
+ <div class="charts-panel">
+        <div class="chart-controls">
+            <h3>Visual Insights</h3>
+            <div class="slider-arrows">
+                <button onclick="slideChart(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <button onclick="slideChart(1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+        
+        {% comment %} <div class="chart-slider" id="chartSlider">
+            <!-- Slide 1: Bar Chart -->
+            <div class="chart-slide active">
+                <canvas id="scoreChart"></canvas>
+            </div>
+            <!-- Slide 2: Radar Chart -->
+            <div class="chart-slide">
+                <canvas id="skillsChart"></canvas>
+            </div>
+        </div> {% endcomment %}
+
+        <!-- Chart Slider Wrapper -->
+        <div class="chart-slider">
+            
+            <!-- Chart 1: ATS Distribution (Histogram) -->
+            <div class="chart-slide active">
+                <canvas id="atsDistChart"></canvas>
+            </div>
+            
+            <!-- Chart 2: JD Match vs ATS Score (Scatter Insight) -->
+            <div class="chart-slide">
+                <canvas id="scatterChart"></canvas>
+            </div>
+
+            <!-- Chart 3: Pipeline Status (Donut) -->
+            <div class="chart-slide">
+                <canvas id="statusChart"></canvas>
+            </div>
+
+            <!-- Chart 4: Top Skills Demand (Horizontal Bar) -->
+            <div class="chart-slide">
+                <canvas id="skillsBarChart"></canvas>
+            </div>
+
+</div>
+
+    </div>
+        </div>
+
+        <!-- SECTION 2: FILTERS & ACTIONS -->
+        <div class="filter-bar">
+            <div class="filters-left">
+                <div class="search-box">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search candidate..." onkeyup="filterTable()">
+                </div>
+                
+                <select id="statusFilter" onchange="filterTable()">
+                    <option value="all">All Status</option>
+                    <option value="Shortlist">✅ Shortlisted</option>
+                    <option value="Review">⚠️ Review</option>
+                    <option value="Reject">❌ Rejected</option>
+                </select>
+
+                <select id="fieldFilter" onchange="filterTable()">
+                    <option value="all">All Fields</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Software Dev">Software Dev</option>
+                    <option value="Marketing">Marketing</option>
+                </select>
+            </div>
+
+            <div class="filters-right">
+                <button class="btn-outline-sm" onclick="alert('Exporting CSV...')"><i class="fa-solid fa-file-csv"></i> CSV</button>
+                <button class="btn-primary-sm" onclick="alert('Downloading ZIP...')"><i class="fa-solid fa-file-zipper"></i> Download ZIP</button>
+            </div>
+        </div>
+
+        <!-- SECTION 3: SORTABLE CANDIDATES TABLE -->
+        <div class="table-container">
+            <table class="recruiter-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>ATS Score</th>
+                        <th>JD Match</th>
+                        <th>Overall</th>
+                        <th>Field</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="candidateTableBody">
+                    
+                    <!-- Candidate 1 (Shortlist) -->
+                    <tr class="main-row" onclick="toggleDetails('row1')">
+                        <td class="name-col"><i class="fa-solid fa-file-pdf"></i> Ali Khan</td>
+                        <td><div class="badge green-bg">82%</div></td>
+                        <td>78%</td>
+                        <td><strong>80%</strong></td>
+                        <td>Data Science</td>
+                        <td><span class="status-pill success">✅ Shortlist</span></td>
+                        <td><i class="fa-solid fa-chevron-down arrow-icon"></i></td>
+                    </tr>
+                    <!-- Expandable Details Row 1 -->
+                    <tr id="row1" class="details-row hidden">
+                        <td colspan="7">
+                            <div class="mini-insight">
+                                <div class="insight-col">
+                                    <p><strong>Formatting:</strong> 9/10 (Clean)</p>
+                                    <p><strong>Tone:</strong> Professional</p>
+                                </div>
+                                <div class="insight-col">
+                                    <p><strong>Top Skills:</strong> Python, SQL, Tableau</p>
+                                    <p><strong>Missing:</strong> <span class="text-red">AWS, Docker</span></p>
+                                </div>
+                                <div class="insight-col">
+                                    <p class="ai-suggestion"><i class="fa-solid fa-lightbulb"></i> <strong>AI Tip:</strong> Strong candidate for Lead DS role. Check AWS experience in interview.</p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Candidate 2 (Review) -->
+                    <tr class="main-row" onclick="toggleDetails('row2')">
+                        <td class="name-col"><i class="fa-solid fa-file-pdf"></i> Sara Ahmed</td>
+                        <td><div class="badge orange-bg">55%</div></td>
+                        <td>40%</td>
+                        <td><strong>48%</strong></td>
+                        <td>Software Dev</td>
+                        <td><span class="status-pill warning">⚠️ Review</span></td>
+                        <td><i class="fa-solid fa-chevron-down arrow-icon"></i></td>
+                    </tr>
+                    <!-- Expandable Details Row 2 -->
+                    <tr id="row2" class="details-row hidden">
+                        <td colspan="7">
+                            <div class="mini-insight">
+                                <div class="insight-col">
+                                    <p><strong>Formatting:</strong> 6/10 (Dense)</p>
+                                    <p><strong>Tone:</strong> Passive</p>
+                                </div>
+                                <div class="insight-col">
+                                    <p><strong>Top Skills:</strong> Java, Spring</p>
+                                    <p><strong>Missing:</strong> <span class="text-red">React, Microservices</span></p>
+                                </div>
+                                <div class="insight-col">
+                                    <p class="ai-suggestion"><i class="fa-solid fa-lightbulb"></i> <strong>AI Tip:</strong> Good technical base but resume lacks keyword optimization.</p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Candidate 3 (Reject) -->
+                    <tr class="main-row" onclick="toggleDetails('row3')">
+                        <td class="name-col"><i class="fa-solid fa-file-pdf"></i> Usman</td>
+                        <td><div class="badge red-bg">30%</div></td>
+                        <td>10%</td>
+                        <td><strong>22%</strong></td>
+                        <td>Unknown</td>
+                        <td><span class="status-pill danger">❌ Reject</span></td>
+                        <td><i class="fa-solid fa-chevron-down arrow-icon"></i></td>
+                    </tr>
+                    <!-- Expandable Details Row 3 -->
+                    <tr id="row3" class="details-row hidden">
+                        <td colspan="7">
+                            <div class="mini-insight">
+                                <div class="insight-col">
+                                    <p><strong>Formatting:</strong> 3/10 (Messy)</p>
+                                    <p><strong>Tone:</strong> Informal</p>
+                                </div>
+                                <div class="insight-col">
+                                    <p><strong>Top Skills:</strong> Excel</p>
+                                    <p><strong>Missing:</strong> <span class="text-red">Python, SQL, ML</span></p>
+                                </div>
+                                <div class="insight-col">
+                                    <p class="ai-suggestion"><i class="fa-solid fa-triangle-exclamation"></i> <strong>AI Tip:</strong> Not relevant for this role.</p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Transparency Note -->
+        <div class="transparency-note">
+            <p><i class="fa-solid fa-shield-halved"></i> <strong>AI Transparency:</strong> Scores are AI‑generated based on resume content, skills relevance, and ATS compatibility. Final decision remains with the recruiter.</p>
+        </div>
+
+    </div>
+
+
+
+
+
+{% endblock  %}

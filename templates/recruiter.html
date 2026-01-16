@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruiter Portal - Bulk Upload</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html" style="color: inherit; text-decoration: none;">
+                <i class="fa-solid fa-briefcase"></i> Recruiter Portal
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="recruiter.html" class="active-link">Bulk Check</a>
+            <a href="contact.html">Contact</a>
+            
+            <button id="theme-toggle" class="theme-btn">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </nav> {% endcomment %}
+
+
+
+
+    <!-- Recruiter Hero -->
+    <header class="hero-section" style="padding: 60px 20px;">
+        <div class="hero-content">
+            <h1>Bulk Resume Screening</h1>
+            <p>Upload multiple CVs at once and rank them based on your job description.</p>
+        </div>
+    </header>
+
+    <!-- Bulk Upload Section -->
+    <div class="checker-container" style="margin-top: -40px;">
+        <div class="upload-card">
+            <div class="card-header-strip">
+                <i class="fa-solid fa-layer-group"></i> Batch Upload (Multiple Files)
+            </div>
+            
+            <div class="card-body">
+                <!-- Job Description -->
+                <label class="input-label">Job Description (Required for Ranking)</label>
+                <textarea id="recruiter-job-desc" placeholder="Paste the job description here to rank candidates..."></textarea>
+
+                <!-- Bulk Upload Area -->
+                <label class="input-label" style="margin-top: 20px;">Upload Resumes (PDF Only)</label>
+                <div class="upload-area" id="recruiter-drop-area">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <p>Drag & Drop multiple files here</p>
+                    <span>or click to browse (Max 20 files)</span>
+                    <!-- Note: 'multiple' attribute allows selecting many files -->
+                    <input type="file" id="recruiterFileElem" multiple accept=".pdf" style="display:none">
+                </div>
+
+                <!-- Selected Files List -->
+                <div id="file-list-container" class="file-list-box" style="display: none;">
+                    <h4>Selected Documents:</h4>
+                    <ul id="uploaded-files-list">
+                        <!-- Javascript will add list items here -->
+                    </ul>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                    <span id="file-count" style="font-size: 0.9rem; color: #6b7280;">0 files selected</span>
+                    <button class="btn-block" id="bulk-analyze-btn" style="width: auto; margin-top: 0;" onclick="analyzeBulkCV()">
+                        Rank Candidates <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock  %}

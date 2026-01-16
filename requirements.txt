@@ -6,4 +6,3 @@ scikit-learn==1.3.0
 pdfplumber==0.9.0
 joblib==1.3.2
 
-koyeb.yaml

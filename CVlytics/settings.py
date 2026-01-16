@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-44#azw8(zjbevr)dlbmdxhqx9x-i3#2%v!ahn2wk2xj*wu4r3q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -145,22 +145,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-from pathlib import Path
+STATIC_URL = 'static/'
+STATICFILES_DIRS =[
+    BASE_DIR,'static'
+]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 import os
+from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 
-# ye tumhara local static folder (jahan css, js, img hai)
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-# ye deploy ke time collectstatic ka output folder
 STATIC_ROOT = BASE_DIR / "staticfiles"
-
-# Media (optional)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'

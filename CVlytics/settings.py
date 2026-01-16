@@ -159,8 +159,8 @@ USE_TZ = True
 # ]
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DEBUG = True   # production me True mat rakho
-ALLOWED_HOSTS = ["*"]
+# DEBUG = True   # production me True mat rakho
+# ALLOWED_HOSTS = ["*"]
 
 # -------- STATIC FILES --------
 STATIC_URL = '/static/'

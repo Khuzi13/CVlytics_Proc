@@ -145,23 +145,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS =[
-    BASE_DIR,'static'
-]
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
-import os
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 
+# ye tumhara local static folder (jahan css, js, img hai)
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+# ye deploy ke time collectstatic ka output folder
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Media (optional)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

@@ -1,0 +1,16 @@
+js me chart ki value bhejni hai taaqe chart bane
+
+
+recruiter batch snapshot me ... aesa show hoga
+| Metric                | Value                            |
+| --------------------- | -------------------------------- |
+| Total Resumes         | 120                              |
+| Avg ATS Score         | 62%                              |
+| Top 10% Candidates    | 12                               |
+| **JD Match Coverage** | **YES (Applied to all resumes)** |
+| **Avg JD Match %**    | **58%**                          |
+| **JD Match > 70%**    | **34 Candidates**                |
+like mazeed cards add honge
+
+
+zip wale feature ke baare me soochna ya parse.gpt me dekhna steps mks accounts se

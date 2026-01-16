@@ -1,0 +1,193 @@
+
+/* Contact US Page Css */
+/* =========================
+   CONTACT PAGE STYLES
+========================= */
+
+/* Header */
+.contact-header {
+    background: linear-gradient(135deg, #4338ca, #312e81);
+    color: white;
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.contact-header h1 {
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+}
+
+.contact-header p {
+    color: #e0e7ff;
+    font-size: 1rem;
+}
+
+/* Container */
+.contact-container {
+    max-width: 1100px;
+    margin: -50px auto 60px;
+    padding: 20px;
+}
+
+/* Card */
+.contact-card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    display: flex;
+    overflow: hidden;
+}
+
+/* Left Info Panel */
+.contact-info {
+    background: var(--primary);
+    color: white;
+    padding: 40px 35px;
+    width: 40%;
+}
+
+.contact-info h3 {
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    font-size: 0.9rem;
+    color: #e0e7ff;
+    margin-bottom: 25px;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 18px;
+    font-size: 0.9rem;
+}
+
+.info-item i {
+    margin-top: 4px;
+    color: #c7d2fe;
+}
+
+/* Social Icons */
+.social-icons {
+    margin-top: 30px;
+}
+
+.social-icons a {
+    color: white;
+    margin-right: 12px;
+    font-size: 1.2rem;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #c7d2fe;
+    transform: translateY(-2px);
+}
+
+/* Right Form */
+.contact-form-wrapper {
+    width: 60%;
+    padding: 40px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 0.9rem;
+    background: #f9fafb;
+}
+
+.form-group textarea {
+    resize: vertical;
+    height: 120px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+}
+
+/* Button */
+.btn-full {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Text Area change for only contact_us Page */
+.contact-form-wrapper textarea {
+    background: #f9fafb;
+    color: var(--text-dark);
+}
+
+
+/* =========================
+   RESPONSIVE CONTACT PAGE
+========================= */
+
+@media (max-width: 992px) {
+    .contact-card {
+        flex-direction: column;
+    }
+
+    .contact-info,
+    .contact-form-wrapper {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .contact-header h1 {
+        font-size: 1.9rem;
+    }
+
+    .contact-container {
+        margin-top: -30px;
+    }
+
+    .contact-info {
+        padding: 30px;
+    }
+
+    .contact-form-wrapper {
+        padding: 30px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .contact-header {
+        padding: 60px 15px;
+    }
+
+    .contact-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .contact-info p {
+        font-size: 0.85rem;
+    }
+}
+
+
+style.css 3 copy last hai
+main issue only toggle ki placement

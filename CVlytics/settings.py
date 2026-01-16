@@ -159,14 +159,14 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DEBUG = False   # production me False hi rakho
+DEBUG = True   # production me True mat rakho
 
 ALLOWED_HOSTS = ["*"]  # abhi testing ke liye
 
 STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",   # tumhara static folder
+    BASE_DIR / "static",   # yahan tumhari css/js hai
 ]
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / "staticfiles"  # collectstatic yahin copy karega
